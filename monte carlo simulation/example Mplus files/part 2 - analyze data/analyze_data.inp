@@ -1,0 +1,35 @@
+title:
+Example Mplus Input File Used to Analyze Analytic 
+Sample Datasets Using the Doubly Latent Model
+
+data:
+type = montecarlo; 
+file = part2_replist.txt; !name of textfile containing names of 
+                          !each analytic sample dataset, sampled 
+                          !according to SR=0.20
+variable:
+names = x1-x4 schid; 
+cluster = schid;                             
+
+model: 
+%within%
+x1-x4*22.8; 
+Factor_w BY x1*1(1) !Constrain factor loadings to be invariant across levels
+x2*1(2)
+x3*1(3)
+x4*1(4); 
+Factor_w@1; ! L1 factor variance constrained for identification
+
+
+%between%
+x1-x4*1.2; 
+Factor_b BY x1*1(1) !Cross-level invariance
+x2*1(2)
+x3*1(3)
+x4*1(4); 
+
+Factor_b*1; ! L2 factor variance freely estimated
+
+analysis:
+type = twolevel;
+estimator = mlr;
