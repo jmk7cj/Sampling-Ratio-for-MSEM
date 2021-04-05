@@ -1,0 +1,33 @@
+data:
+file = data.csv;
+
+variable:
+names = student_ID school_ID enrollment 
+read math science l1_sample_size sampling_ratio;
+
+usevariables = read math science;
+
+cluster = school_ID;
+
+analysis:
+type = twolevel;
+estimator = mlr; 
+
+model: 
+%within%
+Factor_w BY read*(1)
+math(2) 
+science(3);
+
+read math science;
+
+Factor_w@1; 
+
+%between%
+Factor_b BY read*(1) 
+math(2) 
+science(3);
+
+read math science;
+
+Factor_b; 
