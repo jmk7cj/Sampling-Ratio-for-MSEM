@@ -1,0 +1,29 @@
+title:
+Example Mplus Input File Used to Generate 
+Population Data Using the Doubly Latent Model
+
+montecarlo:
+seed = 123;
+names = x1-x4; !4 observed indicators at L1
+ncsizes = 1;
+csizes = 100(100); !100 clusters of size 100
+nobservations = 10000; 
+nreps = 10; !example for 10 replications 
+repsave = all;
+save = rep*.dat;
+
+model population:
+%within%
+x1-x4*22.8; !L1 residual variance of indicators 
+Factor_w BY x1-x4*1; !L1 factor loadings
+Factor_w*1; !L1 factor variance 
+[Factor_w*0]; !L1 factor mean
+
+%between%
+x1-x4*1.2; !L2 residual variance of indicators 
+Factor_b BY x1-x4*1; !L2 factor loadings
+Factor_b*1; !L2 factor variance 
+[Factor_b*0]; !L2 factor mean
+
+analysis:
+type = twolevel basic;
