@@ -1,0 +1,203 @@
+Mplus VERSION 8.6 (Mac)
+MUTHEN & MUTHEN
+04/05/2021  12:35 PM
+
+INPUT INSTRUCTIONS
+
+  title:
+  Example Mplus Input File Used to Generate
+  Population Data Using the Doubly Latent Model
+
+  montecarlo:
+  seed = 123;
+  names = x1-x4; !4 observed indicators at L1
+  ncsizes = 1;
+  csizes = 100(100); !100 clusters of size 100
+  nobservations = 10000;
+  nreps = 10; !example for 10 replications
+  repsave = all;
+  save = rep*.dat;
+
+  model population:
+  %within%
+  x1-x4*22.8; !L1 residual variance of indicators
+  Factor_w BY x1-x4*1; !L1 factor loadings
+  Factor_w*1; !L1 factor variance
+  [Factor_w*0]; !L1 factor mean
+
+  %between%
+  x1-x4*1.2; !L2 residual variance of indicators
+  Factor_b BY x1-x4*1; !L2 factor loadings
+  Factor_b*1; !L2 factor variance
+  [Factor_b*0]; !L2 factor mean
+
+  analysis:
+  type = twolevel basic;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+Example Mplus Input File Used to Generate
+Population Data Using the Doubly Latent Model
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                       10000
+
+Number of replications
+    Requested                                                   10
+    Completed                                                   10
+Value of seed                                                  123
+
+Number of dependent variables                                    4
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   X1          X2          X3          X4
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                   100
+Convergence criterion                                    0.100D-05
+Maximum number of EM iterations                                500
+Convergence criteria for the EM algorithm
+  Loglikelihood change                                   0.100D-02
+  Relative loglikelihood change                          0.100D-05
+  Derivative                                             0.100D-03
+Minimum variance                                         0.100D-03
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+
+
+SUMMARY OF DATA FOR THE FIRST REPLICATION
+
+     Cluster information
+
+       Size (s)    Number of clusters of Size s
+
+        100           100
+
+     Average cluster size      100.000
+
+     Estimated Intraclass Correlations for the Y Variables
+
+                Intraclass              Intraclass              Intraclass
+     Variable  Correlation   Variable  Correlation   Variable  Correlation
+
+     X1           0.080      X2           0.092      X3           0.088
+     X4           0.103
+
+
+
+
+SAMPLE STATISTICS FOR THE FIRST REPLICATION
+
+NOTE:  The sample statistics for within and between refer to the
+       maximum-likelihood estimated within and between covariance
+       matrices, respectively.
+
+
+     ESTIMATED SAMPLE STATISTICS FOR WITHIN
+
+
+           Means
+              X1            X2            X3            X4
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           Covariances
+              X1            X2            X3            X4
+              ________      ________      ________      ________
+ X1            23.673
+ X2             0.554        23.867
+ X3             0.692         0.868        23.949
+ X4             1.003         1.330         1.089        23.648
+
+
+           Correlations
+              X1            X2            X3            X4
+              ________      ________      ________      ________
+ X1             1.000
+ X2             0.023         1.000
+ X3             0.029         0.036         1.000
+ X4             0.042         0.056         0.046         1.000
+
+
+     ESTIMATED SAMPLE STATISTICS FOR BETWEEN
+
+
+           Means
+              X1            X2            X3            X4
+              ________      ________      ________      ________
+               -0.078        -0.362        -0.075        -0.257
+
+
+           Covariances
+              X1            X2            X3            X4
+              ________      ________      ________      ________
+ X1             2.071
+ X2             1.138         2.405
+ X3             1.095         0.936         2.321
+ X4             0.786         1.177         1.025         2.716
+
+
+           Correlations
+              X1            X2            X3            X4
+              ________      ________      ________      ________
+ X1             1.000
+ X2             0.510         1.000
+ X3             0.499         0.396         1.000
+ X4             0.331         0.460         0.408         1.000
+
+
+TECHNICAL 9 OUTPUT
+
+  Error messages for each replication (if any)
+
+
+
+SAVEDATA INFORMATION
+
+  Order of variables
+
+    X1
+    X2
+    X3
+    X4
+    CLUSTER
+
+  Save file
+    rep*.dat
+
+  Save file format           Free
+  Save file record length    10000
+
+
+     Beginning Time:  12:35:24
+        Ending Time:  12:35:26
+       Elapsed Time:  00:00:02
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen
