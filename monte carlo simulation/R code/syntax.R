@@ -2,7 +2,7 @@
 # Author: Joseph Kush (jkush1@jhu.edu) (jmk7cj@virginia.edu)
 # 
 # Title: The sampling ratio in multilevel structural equation models: Considerations to inform
-#       study design R code for Monte Carlo simulations
+#        study design R code for Monte Carlo simulations
 #
 # Date: 4/20/2021
 #
