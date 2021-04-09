@@ -22,8 +22,8 @@
 # Step 1: Generate facets for Monte Carlo study 
 #----------------------------------------------------------------------------------------------#
 # Load necessary packages
-library('MplusAutomation'); library('splitstackshape'); library('data.table'); 
-library('doParallel'); library('weights'); library("foreach"); library("future")
+library("MplusAutomation"); library("splitstackshape"); library("data.table"); 
+library("doParallel"); library("weights"); library("foreach"); library("future")
 
 # Remove working environment, close any open connections
 rm(list = ls()); closeAllConnections()
