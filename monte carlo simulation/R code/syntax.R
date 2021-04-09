@@ -46,8 +46,8 @@ facets <- as.data.frame(expand.grid(l2_groups, nT, ICC, lambda, SR))
 colnames(facets) <- c("j", "tot_ij", "ICC", "std_loading", "SR")
 facets[,ncol(facets)+1] <- (facets$`tot_ij` * facets$`SR`)
 colnames(facets)[ncol(facets)] <- c("samp_ij")
-facets$l2_resid_var = round(facets$ICC*(1-facets$std_loading^2)/(facets$std_loading^2), digits=2)
-facets$l1_resid_var = round((1-facets$ICC)*(1-facets$std_loading^2)/(facets$std_loading^2), digits=2)
+facets$l2_resid_var <- round(facets$ICC*(1-facets$std_loading^2)/(facets$std_loading^2), digits=2)
+facets$l1_resid_var <- round((1-facets$ICC)*(1-facets$std_loading^2)/(facets$std_loading^2), digits=2)
 
 # Create a series of folders and subfolders to store data for specific conditions
 for(a in l2_groups) { 
@@ -146,7 +146,7 @@ foreach(rep = 1:number_of_reps, .combine=rbind) %dopar% {
 library("MplusAutomation"); library("data.table"); library('splitstackshape')
 
 setwd(paste0(x,"/j_",j,"/nt_",nt,"/load_",load,"/icc_",icc))
-data <-fread(paste0("rep",rep,".dat"))
+data <- fread(paste0("rep",rep,".dat"))
 length <- nrow(data)/j
 colnames(data) <- c("x1","x2","x3","x4","schid")
 randomdraw = stratified(as.data.frame(data), group="schid", size=sr*length)
@@ -326,7 +326,5 @@ colnames(results)[6:24] <- c("requested","completed","convergence",
                              #"x1_power", "x2_power", "x3_power", "x4_power",
                              "x1_rmse", "x2_rmse", "x3_rmse", "x4_rmse",
                              "x1_rel_bias", "x2_rel_bias", "x3_rel_bias", "x4_rel_bias")
-
-write.csv(results, paste0(x,"/results.csv"))
 summary(results)
 #----------------------------------------------------------------------------------------------#
